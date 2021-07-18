@@ -36,6 +36,27 @@ const generateHint = (guess) =>  {
   console.log(`Guess array is: ${guessArray}`);
   //console.log(guessArray[1]);
   let correctLetterLocations = 0;
+  let correctLetters = 0;
+  let targetIndex = -1;
+  for(let i = 0; i < solutionArray.length; i++)
+    if(guessArray[i] === solutionArray[i]){
+      console.log('there is a correct location match');
+      correctLetterLocations += 1;
+      console.log("correct letter locations: ", correctLetterLocations);
+      solutionArray[i] = null;
+      console.log("new solutionArray: ", solutionArray);
+    } 
+  for(let i = 0; i < solutionArray.length; i++)
+    if(solutionArray.indexOf(guessArray[i]) >= 0){
+      console.log("There is a letter match");
+      correctLetters += 1;
+      targetIndex = i;
+      solutionArray[targetIndex] = null;
+      console.log("targetIndex: ", targetIndex);
+      console.log("new solutionArray: ", solutionArray);
+    }
+  
+
 }
 
 const mastermind = (guess) => {
