@@ -13,7 +13,7 @@ let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 const printBoard = () =>  {
   for (let i = 0; i < board.length; i++) {
-    console.log(board[i]);
+    console.log(board[i],"what is this");
   }
 }
 
@@ -28,13 +28,27 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateHint = () =>  {
+const generateHint = (guess) =>  {
   // your code here
+  let solutionArray = solution.split('');
+  console.log(`Solution array is: ${solutionArray}`);
+  let guessArray = guess.split('');
+  console.log(`Guess array is: ${guessArray}`);
+  //console.log(guessArray[1]);
+  let correctLetterLocations = 0;
 }
 
 const mastermind = (guess) => {
   solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
+  
+  if(guess == solution){
+    console.log("guess: ", guess);
+    console.log("solution: ", solution);
+    return console.log('you guessed it');
+  }else {
+    generateHint(guess);
+  }
 }
 
 
@@ -44,6 +58,7 @@ const getPrompt = () =>  {
     printBoard();
     getPrompt();
   });
+
 }
 
 // Tests
