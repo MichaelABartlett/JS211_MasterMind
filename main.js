@@ -36,6 +36,7 @@ const generateHint = (guess) =>  {
   console.log(`Guess array is: ${guessArray}`);
   //console.log(guessArray[1]);
   let correctLetterLocations = 0;
+  
   let correctLetters = 0;
   let targetIndex = -1;
   for(let i = 0; i < solutionArray.length; i++)
@@ -44,7 +45,9 @@ const generateHint = (guess) =>  {
       correctLetterLocations += 1;
       console.log("correct letter locations: ", correctLetterLocations);
       solutionArray[i] = null;
-      console.log("new solutionArray: ", solutionArray);
+      console.log("new solutionArray correct location match: ", solutionArray);
+      return solutionArray.join();
+
     } 
   for(let i = 0; i < solutionArray.length; i++)
     if(solutionArray.indexOf(guessArray[i]) >= 0){
@@ -53,9 +56,11 @@ const generateHint = (guess) =>  {
       targetIndex = i;
       solutionArray[targetIndex] = null;
       console.log("targetIndex: ", targetIndex);
-      console.log("new solutionArray: ", solutionArray);
+      console.log("new solutionArray letter match: ", solutionArray);
+      return solutionArray.join();
     }
   
+    // fruits.splice(1, 1, null,);
 
 }
 
