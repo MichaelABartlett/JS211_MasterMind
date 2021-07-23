@@ -51,7 +51,6 @@ const generateHint = (guess) =>  {
       //console.log("correct letter locations: ", correctLetterLocations);
       solutionArray[i] = null;
       //console.log("new solutionArray correct location match: ", solutionArray);
-      //correctLocationString = solutionArray.join();
 
     } 
    
@@ -69,7 +68,6 @@ const generateHint = (guess) =>  {
     solutionArray[targetIndex] = null;
     //console.log("targetIndex: ", targetIndex);
     //console.log("new solutionArray letter match: ", solutionArray);
-    //correctLetterString = solutionArray.join();
     
     }
     
@@ -77,10 +75,11 @@ const generateHint = (guess) =>  {
      
   //console.log('correctLocationString: ', correctLocationString);
   //console.log('correctLetterString: ', correctLetterString);
+  
   let boardString = (guess+","+correctLetterLocations.toString()+"-"+correctLetters.toString());
   board.push(boardString);
 
-
+  return correctLetterLocations + '-' + correctLetters;
   //console.log('this the the new board: ', board);
 
 }
@@ -95,8 +94,9 @@ const mastermind = (guess) => {
   if(guess == solution){
     printBoard();
     console.log('you guessed it');
-    continueGame = false;
-  }else if(count >= 3){
+    continueGame = false
+    return 'You guessed it!';
+  }else if(count >= 10){
     console.log('You ran out of turns! The solution was ', solution)
     continueGame = false;
   } else {
@@ -111,7 +111,7 @@ const mastermind = (guess) => {
 const getPrompt = () =>  {
   rl.question('guess: ', (guess) => {
     mastermind(guess);
-    if(continueGame = false){
+    if(!continueGame){
       console.log('game over')
       return false;
     } else {
